@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бесконечный Платформер</title>
+     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-infinity"></i> Бесконечный Платформер</h1>
+            <p class="subtitle">Собери ВСЕ монеты на уровне для перехода на следующий!</p>
+
+        <main>
+            <div class="game-area">
+                <div class="game-stats">
+                    <div class="stat">
+                        <span class="stat-label"><i class="fas fa-heart"></i> Здоровье:</span>
+                        <div class="health-bar">
+                            <div class="health-fill" id="health-fill"></div>
+                        </div>
+                        <span class="stat-value" id="health-text">100%</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label"><i class="fas fa-coins"></i> Счет:</span>
+                        <span class="stat-value" id="score">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label"><i class="fas fa-tachometer-alt"></i> Уровень:</span>
+                        <span class="stat-value" id="level">1</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label"><i class="fas fa-running"></i> Дистанция:</span>
+                        <span class="stat-value" id="distance">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label"><i class="fas fa-star"></i> Монеты:</span>
+                        <span class="stat-value" id="coins">0/5</span>
+                    </div>
+                </div>
+
+                <div class="canvas-container">
+                    <canvas id="gameCanvas" width="800" height="500"></canvas>
+                    
+                    <div class="game-overlay" id="startScreen">
+                        <h2>Бесконечный Платформер</h2>
+                        <p>Используй клавиши <kbd>←</kbd>/<kbd>→</kbd> для движения</p>
+                        <p>Нажми <kbd>↑</kbd> для прыжка</p>
+                        <p>Собери все монеты на уровне для перехода на следующий!</p>
+                        <button id="startButton" class="btn btn-primary">
+                            <i class="fas fa-play"></i> Начать игру
+                        </button>
+                    </div>
+
+                    <div class="game-overlay" id="gameOverScreen" style="display: none;">
+                        <h2>Игра окончена!</h2>
+                        <p>Ваш счет: <span id="finalScore">0</span></p>
+                        <p>Пройденная дистанция: <span id="finalDistance">0</span></p>
+                        <p>Уровень: <span id="finalLevel">1</span></p>
+                        <button id="restartButton" class="btn btn-primary">
+                            <i class="fas fa-redo"></i> Играть снова
+                        </button>
+                    </div>
+
+                    <div class="game-overlay" id="pauseScreen" style="display: none;">
+                        <h2>Пауза</h2>
+                        <p>Игра приостановлена</p>
+                        <button id="resumeButton" class="btn btn-primary">
+                            <i class="fas fa-play"></i> Продолжить
+                        </button>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <div class="control-buttons">
+                        <button id="pauseButton" class="btn btn-secondary">
+                            <i class="fas fa-pause"></i> Пауза
+                        </button>
+                        <button id="restartButton2" class="btn btn-secondary">
+                            <i class="fas fa-redo"></i> Рестарт
+                        </button>
+                        <button id="soundToggle" class="btn btn-secondary">
+                            <i class="fas fa-volume-up"></i> Звук
+                        </button>
+                    </div>
+
+                    <div class="keyboard-help">
+                        <div class="key-row">
+                            <div class="key"><kbd>←</kbd></div>
+                            <span>Влево</span>
+                        </div>
+                        <div class="key-row">
+                            <div class="key"><kbd>→</kbd></div>
+                            <span>Вправо</span>
+                        </div>
+                        <div class="key-row">
+                            <div class="key"><kbd>↑</kbd></div>
+                            <span>Прыжок</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="instructions">
+                <h3><i class="fas fa-info-circle"></i> Как играть:</h3>
+                <ul>
+                    <li>Управляй персонажем с помощью клавиш</li>
+                    <li><strong>Собери ВСЕ золотые монеты на уровне</strong></li>
+                    <li>После сбора всех монет автоматически начнется следующий уровень</li>
+                    <li>На каждом уровне больше монет и сложнее препятствия</li>
+                    <li>Избегай красных препятствий, чтобы не потерять здоровье</li>
+                    <li>Синие щиты дают временную защиту</li>
+                </ul>
+                <div class="level-info">
+                    <h4><i class="fas fa-chart-line"></i> Прогресс сложности:</h4>
+                    <p>Уровень 1: 5 монет | Уровень 2: 7 монет | Уровень 3: 9 монет</p>
+                    <p>Уровень 4: 11 монет | Уровень 5+: 13 монет</p>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Создано с использованием DeepSeek, время использования 40 минут</p>
+        </footer>
+    </div>
+
+    <script src="js/platform.js"></script>
+    <script src="js/obstacle.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>
